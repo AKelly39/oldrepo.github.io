@@ -6,10 +6,10 @@
 	<script src="jquery.min.js"></script>
 	<style>
 		.box {
-			width: 70px;
-			height: 70px;
-			background-color: teal;
-			font-size: 300%;
+			width: 200px;
+			height: 200px;
+			background-color: silver;
+			font-size: 400%;
 			text-align: center;
 			display: block;
 			position: absolute;
@@ -63,7 +63,7 @@
 			// TODO 2 - Variable declarations 
 			var positionX = 0;
 			var points = 0
-			
+			var speed = 10
 
 			
 			/* 
@@ -72,8 +72,14 @@
 			turn it around! 
 			*/
 			function update() {
-				positionX = positionX + 10;
+				positionX = positionX + speed;
 				moveBoxTo(positionX);
+				if (positionX > boardWidth) {
+					speed = -speed;
+				}
+				if (positionX < 0) {
+					speed = -speed;
+				}
 
 			};
 
@@ -85,9 +91,13 @@
 			function handleBoxClick() {
 				positionX = 0;
 				points = points + 1;
+	
 				changeBoxText(points);
-
-
+				if (speed > 0) {
+					speed = speed + 3;
+				} else if (speed < 0) {
+					speed = speed - 3;
+				}
 
 
 			};
