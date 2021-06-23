@@ -6,9 +6,9 @@
 	<script src="jquery.min.js"></script>
 	<style>
 		.box {
-			width: 200px;
-			height: 200px;
-			background-color: silver;
+			width: 80px;
+			height: 80px;
+			background-color: peachpuff;
 			font-size: 400%;
 			text-align: center;
 			display: block;
@@ -62,8 +62,10 @@
 			
 			// TODO 2 - Variable declarations 
 			var positionX = 0;
-			var points = 0
-			var speed = 10
+			var points = 0;
+			var speed = 10;
+			var randNum = Math.random() * 2000;
+
 
 			
 			/* 
@@ -89,7 +91,7 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				positionX = 0;
+				positionX = randNum;
 				points = points + 1;
 	
 				changeBoxText(points);
