@@ -35,11 +35,24 @@ var init = function (window) {
         }
 
         // TODO 3 / 8 : Call the drawCircle() function 
-        drawCircle();
-        drawCircle();
-        drawCircle();
-        drawCircle();
-        drawCircle();
+        // drawCircle();
+        // drawCircle();
+        // drawCircle();
+        // drawCircle();
+        // drawCircle();
+
+        for (var loopsCompleted = 0; loopsCompleted < 100; loopsCompleted++) {
+             drawCircle(); 
+        }
+
+
+    //     var loopsCompleted = 0;
+    //     while (loopsCompleted < 100) {
+    //        drawCircle()
+    //        loopsCompleted++
+    //    }
+
+      
 
 
 
@@ -70,7 +83,9 @@ var init = function (window) {
 
 
             // TODO 9 : Iterate over the array
-           
+           for (var i = 0; i < circles.length; i++) {
+               var eachCircle = physikz.updatePosition(circles[i]);
+           }
             
         }
     
