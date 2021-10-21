@@ -16,7 +16,31 @@ function runProgram(){
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
-  $(document).on('eventType', handleEvent);                           // change 'eventType' to the type of event you want to handle
+  $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
+  $(document).on('keyup', handleKeyUp);
+  var KEY = {
+    "LEFT": 37,
+    "UP": 38,
+    "RIGHT": 39,
+    "DOWN": 40
+  }
+
+  $(document).on('keyup', handleKeyUp);                           // change 'eventType' to the type of event you want to handle
+  var KEY = {
+    "LEFT": 37,
+    "UP": 38,
+    "RIGHT": 39,
+    "DOWN": 40
+  }
+
+
+
+
+  var positionX = 0;
+  var speedX = 0;
+  var positionY = 0;
+  var speedY = 0;
+
 
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -27,6 +51,11 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
+    function redrawGameItem();
+    function repositionGameItem();
+    
+     
+      
     
 
   }
@@ -34,7 +63,45 @@ function runProgram(){
   /* 
   Called in response to events.
   */
-  function handleEvent(event) {
+  function handleKeyDown(event) {
+    if (event.which === KEY.LEFT) {
+      speedX = -5;
+      speedY = -5;
+    }
+    else if (event.which === KEY.UP) {
+      speedX = -5;
+      speedY = -5;
+    }
+    else if (event.which === KEY.RIGHT) {
+      speedX = -5;
+      speedY = -5;
+    }
+    else if (event.which === KEY.DOWN) {
+      speedX = -5;
+      speedY = -5;
+    }
+
+  }
+
+
+
+  function handleKeyUp(event) {
+    if (event.which === KEY.LEFT) {
+      speedX = 0;
+      speedY = 0;
+    }
+    else if (event.which === KEY.UP) {
+      speedX = 0;
+      speedY = 0;
+    }
+    else if (event.which === KEY.RIGHT) {
+      speedX = 0;
+      speedY = 0;
+    }
+    else if (event.which === KEY.DOWN) {
+      speedX = 0;
+      speedY = 0;
+    }
 
   }
 
@@ -49,6 +116,16 @@ function runProgram(){
 
     // turn off event handlers
     $(document).off();
+  }
+
+  function repositionGameItem() {
+    positionX += speedX;
+    positionY += speedY;
+  }
+
+  function redrawGameItem() {
+    $("#box").css("left", positionX);
+    $("#box").css("top", positionY);
   }
   
 }
