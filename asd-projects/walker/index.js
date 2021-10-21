@@ -45,8 +45,8 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    function redrawGameItem();
-    function repositionGameItem();
+    redrawGameItem();
+    repositionGameItem();
     
      
       
@@ -60,19 +60,17 @@ function runProgram(){
   function handleKeyDown(event) {
     if (event.which === KEY.LEFT) {
       speedX = -5;
-      speedY = -5;
+      
     }
     else if (event.which === KEY.UP) {
-      speedX = -5;
       speedY = -5;
     }
     else if (event.which === KEY.RIGHT) {
-      speedX = -5;
-      speedY = -5;
+      speedX = 5;
+      
     }
     else if (event.which === KEY.DOWN) {
-      speedX = -5;
-      speedY = -5;
+      speedY = 5;
     }
 
   }
@@ -82,18 +80,14 @@ function runProgram(){
   function handleKeyUp(event) {
     if (event.which === KEY.LEFT) {
       speedX = 0;
-      speedY = 0;
     }
     else if (event.which === KEY.UP) {
-      speedX = 0;
       speedY = 0;
     }
     else if (event.which === KEY.RIGHT) {
       speedX = 0;
-      speedY = 0;
     }
     else if (event.which === KEY.DOWN) {
-      speedX = 0;
       speedY = 0;
     }
 
@@ -118,8 +112,8 @@ function runProgram(){
   }
 
   function redrawGameItem() {
-    $("#box").css("left", positionX);
-    $("#box").css("top", positionY);
+    $("#gameItem").css("left", positionX);
+    $("#gameItem").css("top", positionY);
   }
   
 }
