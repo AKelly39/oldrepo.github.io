@@ -14,14 +14,56 @@ The CSS ids you will work with are:
 ///////////////////////////////////////////////////////////////////////
 
 // TODO 2: Implement bubbleSort
+//sorts elements of the provided array from smallest to largest
 async function bubbleSort(array) {
-    
+    for (i = 0; i < array.length - 1; i++) {
+        for (j = i + 1; j < array.length - 1; j++) {
+            if (array[i].value > array[j].value)
+            swap(array, i, j);
+            updateCounter(bubbleCounter);
+            await sleep();
+
+        }
+
+    }
 }
 
 // TODO 3: Implement quickSort
+//sorts elements of the array from smallest to largest
+async function quickSort(array, left, right) {
+    if ((right - left) > 0){
+        var index = await partition(array, left, right);
+        }
+        if (left < (index-1)){
+            await quicksort(array, left, index-1);
+        }
+        if (index < right) {
+            await quicksort(array, index, right);
+            
+        }
+}
 
 
 // TODOs 4 & 5: Implement partition
+//var index = await
+async function partition(array, left, right){
+        var pivot = array[Math.floor((right + left)/2)].value;
+        while (left < right){
+            left++          
+            while (array[left] < pivot) {
+                right-- 
+            } 
+             while (array[right] > pivot) {
+                if (left < right) {
+                swap (array[right], array[left]);
+                updateCounter(quickCounter);
+                await sleep();
+                }
+        }
+    }
+        return left + 1
+    
+}
 
 
 // TODO 1: Implement swap
