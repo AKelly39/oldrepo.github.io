@@ -11,15 +11,16 @@ body {
   position: relative;
 }
 
-
+/*
 #gameItem {
   background-color: teal;
   width: 50px;
   height: 50px;
   position: absolute;
-/*   left: 100px; */  /* Uncomment if you want to set a "starting" position */
-/*   top: 100px;  */  /* Uncomment if you want to set a "starting" position */
-}
+} */ 
+/*  left: 100px; */  /* Uncomment if you want to set a "starting" position */
+/*  top: 100px;  */ /* Uncomment if you want to set a "starting" position */
+
 
 
 #paddleR {
@@ -56,4 +57,28 @@ body {
   position: absolute;
   top: 150px;
   left: 180px;
+}
+
+#scorePlayerL {
+  /* appearance */
+  background-color: white;
+  width: 80px;
+  height: 80px;
+  border-radius: 0px;
+  /* positioning */
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#scorePlayerR {
+  /* appearance */
+  background-color: white;
+  width: 80px;
+  height: 80px;
+  border-radius: 0px;
+  /* positioning */
+  position: absolute;
+  top: 0px;
+  left: 360px;
 }
