@@ -14,21 +14,21 @@ function runProgram(){
   const BOARD_HEIGHT = $("#board").height();
   
   // Game Item Objects
-  function gameObject (id, x, y, speedX, speedY, width, height) {
+  function gameObject (id, speedX, speedY) {
     var gameObject = {};
-    gameObject.ID = id;
-    gameObject.x = x; //parseFloat($("#id").css("left"));
-    gameObject.y = y; //parseFloat($("#id").css("top"));
+    gameObject.id = id;
+    gameObject.x = parseFloat($("#id").css("left"));
+    gameObject.y = parseFloat($("#id").css("top"));
     gameObject.speedX = speedX;
     gameObject.speedY = speedY;
-    gameObject.width = width; //$("#id").width();
-    gameObject.height = height; //$("#id").height();
+    gameObject.width = $("#id").width();
+    gameObject.height = $("#id").height();
     return gameObject;
   }
 
-  var paddleL = gameObject("#paddleL", parseFloat($("paddleL").css("left")), parseFloat($("paddleL").css("top")), 0, 0, $("paddleL").width(), $("paddleL").height());
-  var paddleR = gameObject("#paddleR", parseFloat($("paddleR").css("left")), parseFloat($("paddleR").css("top")), 0, 0, $("paddleR").width(), $("paddleR").height());
-  var pongBall = gameObject("#pongBall", parseFloat($("pongBall").css("left")), parseFloat($("pongBall").css("top")), 0, 0, $("pongBall").width(), $("pongBall").height());
+  var paddleL = gameObject("#paddleL", 0, 0);
+  var paddleR = gameObject("#paddleR", 0, 0);
+  var pongBall = gameObject("#pongBall", 0, 0);
 
 
   //(parseFloat($("#id").css("left")), parseFloat($("#id").css("top")), 0, 0, $("#id").width(), $("#id").height());
@@ -71,7 +71,7 @@ function runProgram(){
         gameObject.y + gameObject.height > BOARD_HEIGHT) {
           return true;
       } 
-      if (pongBall.x < 0 || pongBall.x + pongBall.width > BOARD_WIDTH) {
+      if (pongBall.x < 0) {
 
         $("#scorePlayerR").text(updatedScore)
         startBall;
@@ -142,15 +142,7 @@ function runProgram(){
     pongBall.speedX = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
   }
 
-  
 
-/*  function moveObject(gameObject) {
-    gameObject.x += gameObject.speedX;
-    gameObject.y += gameObject.speedY;
-    $("#gameObject").css("left", positionX);
-    $("#gameObject").css("top", positionY);
-    }
-    */
 
   
   function endGame() {
