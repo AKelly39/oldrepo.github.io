@@ -31,9 +31,6 @@ function runProgram(){
   var pongBall = gameObject("#pongBall", 0, 0);
 
 
-  //(parseFloat($("#id").css("left")), parseFloat($("#id").css("top")), 0, 0, $("#id").width(), $("#id").height());
-
-
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   
