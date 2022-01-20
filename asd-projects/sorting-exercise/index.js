@@ -15,6 +15,7 @@ The CSS ids you will work with are:
 
 // TODO 2: Implement bubbleSort
 //sorts elements of the provided array from smallest to largest
+// Smaller issue here is bubbleSort doesn't fully sort and instead one row ends up out of order
 async function bubbleSort(array) {
     for (i = 0; i < array.length - 1; i++) {
         for (j = i + 1; j < array.length - 1; j++) {
@@ -30,6 +31,7 @@ async function bubbleSort(array) {
 
 // TODO 3: Implement quickSort
 //sorts elements of the array from smallest to largest
+//My biggest issue here is that my quickSort isn't responding
 async function quickSort(array, left, right) {
     if ((right - left) > 0){
         var index = await partition(array, left, right);

@@ -97,7 +97,8 @@ function runProgram(){
     "S": 83
   }
 
-  function handleKeyDown(event) {
+  //My main issue here in pong is that I can't move my paddles
+  function handleKeyDown(event) { 
     if (event.which === KEY.UP) {
       paddleR.speedY += 5;
     }
