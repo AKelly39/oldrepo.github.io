@@ -26,9 +26,19 @@ function runProgram(){
     return gameObject;
   }
 
-  var paddleR = gameObject("#paddleL", 0, 0);
-  var paddleL = gameObject("#paddleR", 0, 0);
+  var paddleL = gameObject("#paddleL", 0, 0);
+  var paddleR = gameObject("#paddleR", 0, 0);
   var pongBall = gameObject("#pongBall", 0, 0);
+
+  function playerScores (id, score) {
+    var playerScores = {};
+    playerScores.id = id;
+    playerScores.score = score;
+    return playerScores;
+  }
+
+  var scorePlayerL = playerScores("#scorePlayerL", 0);
+  var scorePlayerR = playerScores("#scorePlayerR", 0);
 
 
   // one-time setup
@@ -58,6 +68,17 @@ function runProgram(){
     moveObject(paddleL);
     moveObject(paddleR);
     moveObject(pongBall);
+
+    wallCollision(paddleL);
+    wallCollision(paddleR);
+    wallCollision(pongBall);
+    
+    doCollide(pongBall, paddleL);
+    doCollide(pongBall, paddleR);
+
+    if (scorePlayerR.score === 11 || scorePlayerL.score === 11){
+      endGame();
+    }
     
 
    
@@ -115,7 +136,7 @@ function runProgram(){
 
   
   function startBall() {
-    pongBall.x = 100;
+    pongBall.x = 200;
     pongBall.y = 200;
     pongBall.speedX = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
   }
@@ -130,22 +151,32 @@ function runProgram(){
     if (gameObject.x < 0 || gameObject.y < 0 ||
       gameObject.x + gameObject.width > BOARD_WIDTH ||
       gameObject.y + gameObject.height > BOARD_HEIGHT) {
-        return true;
+        gameObject.speedY = -gameObject.speedY;
+        //return true
     } 
     if (pongBall.x < 0) {
-
-      $("#scorePlayerR").text(updatedScore)
-      startBall;
+      var updatedScore = scorePlayerR.score + 1;
+      $("#scorePlayerR").text(updatedScore);
+      scorePlayerR.score = updatedScore;
+      startBall();
 
     } if (pongBall.x + pongBall.width > BOARD_WIDTH) {
-
+      var updatedScore = scorePlayerL.score + 1;
       $("#scorePlayerL").text(updatedScore);
-      startBall;
-
-    } else {
-       return false;
-    }
+      scorePlayerL.score = updatedScore;
+      startBall();
+    }  
   }
+
+  function doCollide(gameObject1, gameObject2) {
+    if (gameObject1.x < gameObject2.x + gameObject2.width &&
+      gameObject1.x + pongBall.width > gameObject2.x &&
+      gameObject1.y < gameObject2.y + gameObject2.height &&
+      gameObject1.y + gameObject1.height > gameObject2.y) {
+        gameObject1.speedX = -gameObject1.speedX; 
+    } 
+  }
+  
 
 
 
