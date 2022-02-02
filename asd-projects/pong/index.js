@@ -136,7 +136,7 @@ function runProgram(){
 
   
   function startBall() {
-    pongBall.x = 200;
+    pongBall.x = 235;
     pongBall.y = 200;
     pongBall.speedX = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
   }
@@ -151,8 +151,15 @@ function runProgram(){
     if (gameObject.x < 0 || gameObject.y < 0 ||
       gameObject.x + gameObject.width > BOARD_WIDTH ||
       gameObject.y + gameObject.height > BOARD_HEIGHT) {
+      if (gameObject.id === pongBall) {
         gameObject.speedY = -gameObject.speedY;
-        //return true
+      }
+      if (gameObject.y < 0){
+        gameObject.y = 0;
+      }
+      if (gameObject.y + gameObject.height > BOARD_HEIGHT){
+        gameObject.y = BOARD_HEIGHT - gameObject.height;
+      }
     } 
     if (pongBall.x < 0) {
       var updatedScore = scorePlayerR.score + 1;
